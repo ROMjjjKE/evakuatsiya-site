@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    
+    <!-- iOS / Android Safari & Chrome status bar integration -->
+    <meta name="theme-color" content="#F1F5F9">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+
+    <title>Эвакуация авто Минск 24/7 — Сдвижная гидроплатформа от 120 BYN | Тел: +375 (29) 114-22-99</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts (Inter & Montserrat) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Leaflet.js CSS & JS for Interactive Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            yellow: '#EFA700',
+                            amber: '#E08900',
+                            amberDark: '#C56F00',
+                            darkBg: '#F1F5F9',
+                            cardBg: '#FFFFFF',
+                            slateAccent: '#E2E8F0',
+                            accentBlue: '#38BDF8',
+                            emerald: '#10B981'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #F1F5F9;
+            color: #0F172A;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #FFC700 0%, #FF9900 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(15, 23, 42, 0.1);
+        }
+
+        .glow-button {
+            box-shadow: 0 0 25px rgba(255, 199, 0, 0.35);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glow-button:active, .glow-button:hover {
+            box-shadow: 0 0 35px rgba(255, 199, 0, 0.65);
+            transform: translateY(-1px);
+        }
+
+        /* Leaflet Map styling */
+        .leaflet-container {
+            background-color: #DFE5EC !important;
+            font-family: inherit;
+        }
+        .leaflet-tile {
+            filter: none;
+        }
+        .leaflet-control-attribution {
+            display: none !important;
+        }
+
+        /* Custom Range Input Mobile Optimized */
+        input[type=range] {
+            -webkit-appearance: none;
+            background: #E2E8F0;
+            border-radius: 12px;
+            height: 14px;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 32px;
+            width: 32px;
+            border-radius: 50%;
+            background: #FFC700;
+            cursor: pointer;
+            box-shadow: 0 0 16px rgba(255, 199, 0, 0.9);
+            border: 3px solid #FFFFFF;
+        }
+
+        /* Safe area for iPhone X and newer */
+        .pb-safe {
+            padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
+        }
+        .mb-safe {
+            margin-bottom: env(safe-area-inset-bottom, 0px);
+        }
+
+        /* Mobile touch scrolling horizontal galleries */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    
+/* === FIXES (SiteFast) === */
+*,*::before,*::after{border-radius:0!important}
+input[type=range]::-webkit-slider-thumb,input[type=range]::-moz-range-thumb{border-radius:50%!important}
+h1,h2,h3,h4,p,span,li,a,button,label,dt,dd{overflow-wrap:break-word}
+.flex.justify-between{gap:.6rem}
+.wm-badge{position:fixed;right:12px;bottom:12px;z-index:45;font-family:'Inter',sans-serif;font-size:.62rem;letter-spacing:.05em;padding:.4rem .7rem;text-decoration:none;backdrop-filter:blur(4px);background:rgba(255,255,255,.82);color:#0F172A;border:1px solid rgba(15,23,42,.16)}
+.wm-badge b{color:#E08900;font-weight:800}
+@media(max-width:639px){.wm-badge{bottom:calc(env(safe-area-inset-bottom,0px) + 76px)}}
+</style>
+</head>
+<body class="antialiased selection:bg-brand-yellow selection:text-black pb-safe lg:pb-0">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-gradient-to-r from-amber-500 via-brand-yellow to-yellow-400 text-slate-950 font-black text-xs sm:text-sm py-2 px-3 text-center flex items-center justify-center gap-2 shadow-lg z-50 relative">
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-white animate-ping shrink-0"></span>
+        <span class="truncate">ЭВАКУАЦИЯ АВТО В МИНСКЕ 24/7 — ОТ 120 BYN</span>
+        <a href="tel:+375291142299" class="text-slate-950 hover:text-slate-900 transition ml-2 hidden sm:inline font-extrabold shrink-0">+375 (29) 114-22-99</a>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-slate-200 backdrop-blur-md bg-white/90">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+            
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2.5 group no-underline">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-tr from-brand-yellow to-amber-500 flex items-center justify-center text-slate-950 text-xl sm:text-2xl font-black shadow-lg shrink-0">
+                    <i class="fa-solid fa-truck-ramp-box"></i>
+                </div>
+                <div>
+                    <span class="font-heading font-black text-base sm:text-2xl tracking-wider text-slate-900 block leading-none">
+                        ЭВАКУАЦИЯ <span class="text-brand-yellow">МИНСК</span>
+                    </span>
+                    <span class="text-[8px] sm:text-[10px] text-slate-500 block tracking-wider uppercase font-semibold mt-1">АВТОПОМОЩЬ 24/7 • ГИДРОПЛАТФОРМА</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium text-slate-600">
+                <a href="#advantages" class="hover:text-brand-yellow transition">Преимущества</a>
+                <a href="#calculator" class="hover:text-brand-yellow transition">Калькулятор</a>
+                <a href="#gallery" class="hover:text-brand-yellow transition">Фото работ</a>
+                <a href="#faq" class="hover:text-brand-yellow transition">Вопросы</a>
+                <a href="#reviews" class="hover:text-brand-yellow transition">Отзывы</a>
+            </nav>
+
+            <!-- Header Phone & Mobile Hamburger -->
+            <div class="flex items-center gap-2 sm:gap-4">
+                <div class="hidden sm:flex flex-col text-right">
+                    <a href="tel:+375291142299" class="text-lg sm:text-xl font-black text-slate-900 hover:text-brand-yellow transition flex items-center justify-end gap-2">
+                        <i class="fa-solid fa-phone text-brand-yellow text-xs sm:text-sm animate-bounce"></i>
+                        +375 (29) 114-22-99
+                    </a>
+                    <span class="text-[10px] text-emerald-400 flex items-center justify-end gap-1 font-semibold">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Выезд за 15-20 мин
+                    </span>
+                </div>
+
+                <button onclick="openOrderModal('Срочный вызов эвакуатора')" class="hidden sm:flex bg-gradient-to-r from-brand-yellow to-amber-500 text-slate-950 font-black px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm glow-button transition items-center gap-2">
+                    <i class="fa-solid fa-bolt"></i>
+                    <span>Вызвать</span>
+                </button>
+
+                <!-- Hamburger Button for Mobile -->
+                <button onclick="toggleMobileMenu()" aria-label="Открыть меню" class="lg:hidden w-11 h-11 rounded-xl bg-slate-100 border border-slate-300 text-slate-900 flex items-center justify-center text-xl active:scale-95 transition-transform">
+                    <i class="fa-solid fa-bars" id="menuIcon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE FULLSCREEN MENU OVERLAY -->
+    <div id="mobileMenu" class="fixed inset-0 z-50 bg-white/95 backdrop-blur-xl hidden flex-col justify-between p-6 lg:hidden mb-safe">
+        <div class="flex items-center justify-between border-b border-slate-200 pb-4">
+            <div class="flex items-center gap-2">
+                <div class="w-9 h-9 rounded-lg bg-brand-yellow text-slate-950 flex items-center justify-center font-black">
+                    <i class="fa-solid fa-truck-ramp-box"></i>
+                </div>
+                <span class="font-heading font-black text-lg text-slate-900">Эвакуация авто Минск</span>
+            </div>
+            <button onclick="toggleMobileMenu()" class="w-10 h-10 rounded-full bg-slate-100 border border-slate-200 text-slate-600 flex items-center justify-center text-xl">
+                &times;
+            </button>
+        </div>
+
+        <nav class="flex flex-col space-y-4 my-auto text-center text-lg font-bold text-slate-700">
+            <a href="#calculator" onclick="toggleMobileMenu()" class="py-2.5 text-slate-700 hover:text-brand-yellow border-b border-slate-200">Рассчитать цену (от 120 BYN)</a>
+            <a href="#advantages" onclick="toggleMobileMenu()" class="py-2.5 text-slate-700 hover:text-brand-yellow border-b border-slate-200">Преимущества гидроплатформы</a>
+            <a href="#gallery" onclick="toggleMobileMenu()" class="py-2.5 text-slate-700 hover:text-brand-yellow border-b border-slate-200">Фото работ</a>
+            <a href="#faq" onclick="toggleMobileMenu()" class="py-2.5 text-slate-700 hover:text-brand-yellow border-b border-slate-200">Вопросы и ответы</a>
+            <a href="#reviews" onclick="toggleMobileMenu()" class="py-2.5 text-slate-700 hover:text-brand-yellow">Отзывы клиентов</a>
+        </nav>
+
+        <div class="space-y-3 pt-4 border-t border-slate-200">
+            <a href="tel:+375291142299" class="w-full bg-gradient-to-r from-brand-yellow to-amber-500 text-slate-950 font-black py-3.5 rounded-xl text-center text-base flex items-center justify-center gap-2 glow-button">
+                <i class="fa-solid fa-phone"></i>
+                <span>+375 (29) 114-22-99</span>
+            </a>
+            <div class="flex justify-center gap-3 text-xs text-slate-500">
+                <span>Круглосуточно 24/7 • Подача за 15 минут</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-6 pb-14 lg:pt-16 lg:pb-24 overflow-hidden">
+        <!-- Ambient BG Glow -->
+        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-brand-yellow/10 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                
+                <!-- Hero Left Column -->
+                <div class="lg:col-span-7 space-y-4 sm:space-y-6 text-center lg:text-left">
+                    
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-brand-yellow/30 text-xs text-brand-yellow font-bold tracking-wide">
+                        <i class="fa-solid fa-shield-halved"></i> Сдвижная гидроплатформа до 6 Тонн
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black font-heading tracking-tight leading-tight text-slate-900">
+                        Эвакуация автомобилей <br class="hidden sm:inline"/>
+                        в Минске <span class="text-brand-yellow">от 120 BYN</span>
+                    </h1>
+
+                    <p class="text-slate-600 text-sm sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Срочная и бережная автопомощь 24/7. Специализированный эвакуатор с гидравлическим сдвижным столом для легковушек, внедорожников, электрокаров (Tesla) и коммерческого транспорта (Газели).
+                    </p>
+
+                    <!-- Key Badges Grid for Mobile -->
+                    <div class="grid grid-cols-3 gap-2 sm:gap-3 pt-1 text-center sm:text-left">
+                        <div class="glass-panel p-2.5 sm:p-3.5 rounded-2xl border border-slate-200">
+                            <div class="text-brand-yellow font-black text-sm sm:text-xl">от 120 BYN</div>
+                            <div class="text-[9px] sm:text-xs text-slate-500 mt-0.5">Фиксировано</div>
+                        </div>
+
+                        <div class="glass-panel p-2.5 sm:p-3.5 rounded-2xl border border-slate-200">
+                            <div class="text-emerald-400 font-black text-sm sm:text-xl">15–20 мин</div>
+                            <div class="text-[9px] sm:text-xs text-slate-500 mt-0.5">Подача</div>
+                        </div>
+
+                        <div class="glass-panel p-2.5 sm:p-3.5 rounded-2xl border border-slate-200">
+                            <div class="text-sky-400 font-black text-sm sm:text-xl">до 6 Тонн</div>
+                            <div class="text-[9px] sm:text-xs text-slate-500 mt-0.5">Сложность</div>
+                        </div>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-2">
+                        <a href="tel:+375291142299" class="w-full sm:w-auto bg-gradient-to-r from-brand-yellow via-amber-400 to-amber-500 text-slate-950 font-black text-base sm:text-lg px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl glow-button flex items-center justify-center gap-3 transition">
+                            <i class="fa-solid fa-phone-volume text-lg animate-bounce"></i>
+                            <span>+375 (29) 114-22-99</span>
+                        </a>
+
+                        <a href="#calculator" class="w-full sm:w-auto bg-white/90 hover:bg-slate-300 border border-slate-300 text-slate-900 font-bold text-sm sm:text-base px-6 py-3.5 sm:py-4 rounded-2xl flex items-center justify-center gap-2 transition">
+                            <i class="fa-solid fa-calculator text-brand-yellow"></i>
+                            <span>Рассчитать точную цену</span>
+                        </a>
+                    </div>
+
+                    <!-- Messenger quick links -->
+                    <div class="flex items-center justify-center lg:justify-start gap-3 text-xs text-slate-500 pt-1">
+                        <span>Написать в мессенджер:</span>
+                        <a href="https://t.me/share/url?url=Заказ%20эвакуатора&text=Здравствуйте!%20Нужна%20эвакуация%20авто%20в%20Минске" target="_blank" class="w-10 h-10 rounded-xl bg-sky-500/20 hover:bg-sky-500/40 text-sky-400 flex items-center justify-center text-lg transition">
+                            <i class="fa-brands fa-telegram"></i>
+                        </a>
+                        <a href="https://wa.me/375291142299?text=Здравствуйте!%20Нужен%20эвакуатор" target="_blank" class="w-10 h-10 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/40 text-emerald-400 flex items-center justify-center text-lg transition">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                        <a href="viber://chat?number=%2B375291142299" class="w-10 h-10 rounded-xl bg-purple-500/20 hover:bg-purple-500/40 text-purple-400 flex items-center justify-center text-lg transition">
+                            <i class="fa-brands fa-viber"></i>
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- Hero Image Showcase Right -->
+                <div class="lg:col-span-5 relative">
+                    <div class="glass-panel p-2.5 sm:p-3 rounded-3xl border border-brand-yellow/30 relative shadow-2xl overflow-hidden group">
+                        <div class="absolute top-4 left-4 bg-slate-950/85 backdrop-blur-md border border-brand-yellow/50 text-brand-yellow font-black text-[10px] sm:text-xs px-3 py-1 rounded-full uppercase tracking-wider z-10 flex items-center gap-1.5">
+                            <i class="fa-solid fa-truck-ramp-box"></i> Гидроплатформа 24/7
+                        </div>
+                        <img src="photo_2026-05-24_19-49-49.jpg" alt="Эвакуация авто Минск" class="w-full h-[240px] sm:h-[380px] object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x450/1e293b/ffc700?text=Evakuacia+Minsk'">
+                        
+                        <div class="p-3 sm:p-4 bg-white/90 rounded-2xl mt-2.5 border border-slate-200 flex items-center justify-between">
+                            <div>
+                                <div class="text-[10px] text-slate-500">Спецтехника на линии:</div>
+                                <div class="text-xs sm:text-sm font-bold text-slate-900">Гидравлический сдвижной стол</div>
+                            </div>
+                            <button onclick="openGalleryModal(0)" class="bg-brand-yellow text-slate-950 text-xs font-extrabold px-3 py-2 rounded-xl hover:bg-amber-400 transition">
+                                <i class="fa-solid fa-images"></i> Фото (5)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CALCULATOR SECTION -->
+    <section id="calculator" class="py-10 sm:py-16 bg-white border-y border-slate-200 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+                <span class="text-brand-yellow font-bold text-xs uppercase tracking-widest bg-brand-yellow/10 px-3.5 py-1.5 rounded-full border border-brand-yellow/20">Точный расчет</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold font-heading text-slate-900 mt-2.5">Калькулятор стоимости эвакуации</h2>
+                <p class="text-slate-500 text-xs sm:text-base mt-1.5">Рассчитайте стоимость с выездом по Минску и Беларуси</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
+                
+                <!-- Inputs Left -->
+                <div class="lg:col-span-7 glass-panel p-4 sm:p-8 rounded-3xl border border-slate-200 space-y-5">
+                    
+                    <div>
+                        <label class="block text-xs sm:text-sm font-bold text-slate-900 mb-2.5">1. Тип вашего авто:</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2" id="vehicleTypeGrid">
+                            <!-- JS Injected Buttons -->
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="text-xs sm:text-sm font-bold text-slate-900">2. Расстояние эвакуации:</label>
+                            <span class="text-brand-yellow font-black text-sm sm:text-base bg-slate-100 px-2.5 py-1 rounded-lg border border-slate-300" id="distanceValDisplay">10 км</span>
+                        </div>
+                        <input type="range" id="distanceRange" min="0" max="300" value="10" step="5" class="w-full cursor-pointer accent-brand-yellow my-2" oninput="updateCalculator()">
+                        <div class="flex justify-between text-[10px] sm:text-xs text-slate-500 font-medium">
+                            <span>По Минску</span>
+                            <span>30 км</span>
+                            <span>150 км</span>
+                            <span>300+ км</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs sm:text-sm font-bold text-slate-900 mb-2.5">3. Дополнительные условия:</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-100 border border-slate-200 cursor-pointer active:bg-slate-200 transition">
+                                <input type="checkbox" id="optLockedWheels" onchange="updateCalculator()" class="w-5 h-5 rounded text-brand-yellow accent-brand-yellow">
+                                <span class="text-xs text-slate-600">Заблокировано колесо (+20 BYN)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-100 border border-slate-200 cursor-pointer active:bg-slate-200 transition">
+                                <input type="checkbox" id="optLowClearance" onchange="updateCalculator()" class="w-5 h-5 rounded text-brand-yellow accent-brand-yellow">
+                                <span class="text-xs text-slate-600">Низкий клиренс (+15 BYN)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-100 border border-slate-200 cursor-pointer active:bg-slate-200 transition">
+                                <input type="checkbox" id="optDitch" onchange="updateCalculator()" class="w-5 h-5 rounded text-brand-yellow accent-brand-yellow">
+                                <span class="text-xs text-slate-600">Извлечение из кювета (+30 BYN)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-100 border border-slate-200 cursor-pointer active:bg-slate-200 transition">
+                                <input type="checkbox" id="optNightTime" onchange="updateCalculator()" class="w-5 h-5 rounded text-brand-yellow accent-brand-yellow">
+                                <span class="text-xs text-slate-600">Ночное время (23:00-06:00) (+15 BYN)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Price Output Box Right -->
+                <div class="lg:col-span-5 glass-panel p-5 sm:p-8 rounded-3xl border border-brand-yellow/40 relative flex flex-col justify-between shadow-2xl bg-gradient-to-b from-white to-slate-50">
+                    
+                    <div>
+                        <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-3 flex items-center justify-between border-b border-slate-200 pb-3">
+                            <span>Итоговый расчет:</span>
+                            <span class="text-xs text-brand-yellow font-bold">от 120 BYN</span>
+                        </h3>
+
+                        <div class="space-y-2.5 text-xs sm:text-sm text-slate-600 border-b border-slate-200 pb-4 mb-4">
+                            <div class="flex justify-between">
+                                <span class="text-slate-500" id="summaryVehicleType">Тип авто: Легковое</span>
+                                <span class="font-semibold text-slate-900" id="summaryBasePrice">120 BYN</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-500" id="summaryDistanceText">Километраж (10 км):</span>
+                                <span class="font-semibold text-slate-900" id="summaryDistancePrice">0 BYN</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-500">Доп. услуги:</span>
+                                <span class="font-semibold text-slate-900" id="summaryOptionsPrice">0 BYN</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-100 p-4 sm:p-5 rounded-2xl border border-slate-200 mb-5 text-center">
+                            <span class="text-[11px] uppercase tracking-wider text-slate-500 font-bold block mb-1">Расчетная стоимость</span>
+                            <div class="text-3xl sm:text-5xl font-black text-brand-yellow font-heading" id="calcTotalPrice">
+                                120 <span class="text-xl sm:text-2xl font-bold">BYN</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <button onclick="openCalcOrderModal()" class="w-full bg-gradient-to-r from-brand-yellow to-amber-500 hover:from-amber-500 hover:to-brand-yellow text-slate-950 font-black text-sm sm:text-base py-3.5 sm:py-4 rounded-xl glow-button transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-truck-fast"></i>
+                            <span>Вызвать эвакуатор с этим расчетом</span>
+                        </button>
+                        <a href="tel:+375291142299" class="block text-center text-xs text-slate-500 hover:text-brand-yellow mt-2.5 font-semibold">
+                            Прямой звонок: +375 (29) 114-22-99
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ADVANTAGES OF HYDRAULIC PLATFORM -->
+    <section id="advantages" class="py-12 sm:py-20 bg-slate-100 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+                <span class="text-brand-yellow font-bold text-xs uppercase tracking-widest bg-brand-yellow/10 px-3.5 py-1.5 rounded-full border border-brand-yellow/20">Надежная спецтехника</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold font-heading text-slate-900 mt-2.5">Преимущества гидравлической платформы</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
+                
+                <div class="glass-panel p-5 sm:p-8 rounded-3xl border border-slate-200 hover:border-brand-yellow/60 transition group">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-tr from-brand-yellow to-amber-500 text-slate-950 flex items-center justify-center text-xl sm:text-2xl font-black mb-4 sm:mb-6 shadow-lg">
+                        <i class="fa-solid fa-car-side"></i>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold font-heading text-slate-900 mb-2 group-hover:text-brand-yellow transition">Безопасный заезд (Угол 8°)</h3>
+                    <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">
+                        Платформа съезжает прямо на землю. Заезд проходит плавно и без риска поцарапать обвесы и низкие бамперы спорткаров и электромобилей.
+                    </p>
+                </div>
+
+                <div class="glass-panel p-5 sm:p-8 rounded-3xl border border-slate-200 hover:border-brand-yellow/60 transition group">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-tr from-brand-yellow to-amber-500 text-slate-950 flex items-center justify-center text-xl sm:text-2xl font-black mb-4 sm:mb-6 shadow-lg">
+                        <i class="fa-solid fa-van-shuttle"></i>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold font-heading text-slate-900 mb-2 group-hover:text-brand-yellow transition">Коммерческий транспорт до 6Т</h3>
+                    <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">
+                        Усиленное шасси с легкостью перевозит длиннобазные микроавтобусы, тентованные Газели, макси-бусы и спецтехнику.
+                    </p>
+                </div>
+
+                <div class="glass-panel p-5 sm:p-8 rounded-3xl border border-slate-200 hover:border-brand-yellow/60 transition group">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-tr from-brand-yellow to-amber-500 text-slate-950 flex items-center justify-center text-xl sm:text-2xl font-black mb-4 sm:mb-6 shadow-lg">
+                        <i class="fa-solid fa-plug-circle-bolt"></i>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold font-heading text-slate-900 mb-2 group-hover:text-brand-yellow transition">Электрокары (Tesla / Zeekr / Li)</h3>
+                    <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">
+                        Деликатная затяжка мощной лебедкой с фиксацией мягкими ремнями за колеса без нагрузки на подвеску и элементы батареи.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PHOTO GALLERY -->
+    <section id="gallery" class="py-12 sm:py-20 bg-white relative border-y border-slate-200 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-14">
+                <span class="text-brand-yellow font-bold text-xs uppercase tracking-widest bg-brand-yellow/10 px-3.5 py-1.5 rounded-full border border-brand-yellow/20">Реальные фото</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold font-heading text-slate-900 mt-2.5">Галерея выполненных работ</h2>
+                <p class="text-slate-500 text-xs sm:text-base mt-1.5">Свайпайте влево на телефоне для просмотра всех работ</p>
+            </div>
+
+            <!-- Horizontal Swipeable Gallery on Mobile / Grid on Desktop -->
+            <div class="flex sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-4 -mx-4 px-4 sm:mx-0 sm:px-0">
+                
+                <div class="glass-panel rounded-2xl border border-slate-200 overflow-hidden group hover:border-brand-yellow/60 transition cursor-pointer shrink-0 w-[82vw] sm:w-auto snap-center" onclick="openGalleryModal(0)">
+                    <div class="relative h-48 sm:h-60 overflow-hidden">
+                        <img src="photo_2026-05-24_19-49-49.jpg" alt="Эвакуатор авто Минск" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x400/1e293b/ffc700?text=Evakuacia+Minsk'">
+                        <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="w-10 h-10 rounded-full bg-brand-yellow text-slate-950 flex items-center justify-center font-bold"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                        </div>
+                    </div>
+                    <div class="p-3.5 sm:p-4">
+                        <h4 class="font-bold text-slate-900 text-sm sm:text-base">Специализированный эвакуатор</h4>
+                        <p class="text-xs text-slate-500 mt-0.5">Оснащен сдвижным гидравлическим столом</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-2xl border border-slate-200 overflow-hidden group hover:border-brand-yellow/60 transition cursor-pointer shrink-0 w-[82vw] sm:w-auto snap-center" onclick="openGalleryModal(1)">
+                    <div class="relative h-48 sm:h-60 overflow-hidden">
+                        <img src="photo_5_2026-10-15_08-53-36.jpg" alt="Заезд Tesla Model 3" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x400/1e293b/ffc700?text=Tesla+Ramp+Loading'">
+                        <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="w-10 h-10 rounded-full bg-brand-yellow text-slate-950 flex items-center justify-center font-bold"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                        </div>
+                    </div>
+                    <div class="p-3.5 sm:p-4">
+                        <h4 class="font-bold text-slate-900 text-sm sm:text-base">Погрузка Tesla Model 3</h4>
+                        <p class="text-xs text-slate-500 mt-0.5">Минимальный угол заезда без повреждений низкого обвеса</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-2xl border border-slate-200 overflow-hidden group hover:border-brand-yellow/60 transition cursor-pointer shrink-0 w-[82vw] sm:w-auto snap-center" onclick="openGalleryModal(2)">
+                    <div class="relative h-48 sm:h-60 overflow-hidden">
+                        <img src="photo_3_2026-10-15_08-53-36.jpg" alt="Перевозка электромобилей Tesla" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x400/1e293b/ffc700?text=Tesla+Transport'">
+                        <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="w-10 h-10 rounded-full bg-brand-yellow text-slate-950 flex items-center justify-center font-bold"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                        </div>
+                    </div>
+                    <div class="p-3.5 sm:p-4">
+                        <h4 class="font-bold text-slate-900 text-sm sm:text-base">Перевозка электрокаров</h4>
+                        <p class="text-xs text-slate-500 mt-0.5">Безопасное крепление колес стяжными ремнями</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-2xl border border-slate-200 overflow-hidden group hover:border-brand-yellow/60 transition cursor-pointer shrink-0 w-[82vw] sm:w-auto snap-center" onclick="openGalleryModal(3)">
+                    <div class="relative h-48 sm:h-60 overflow-hidden">
+                        <img src="photo_1_2026-10-15_08-53-36.jpg" alt="Эвакуация тяжелого кроссовера Li Auto" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x400/1e293b/ffc700?text=Li+Auto+SUV+Transport'">
+                        <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="w-10 h-10 rounded-full bg-brand-yellow text-slate-950 flex items-center justify-center font-bold"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                        </div>
+                    </div>
+                    <div class="p-3.5 sm:p-4">
+                        <h4 class="font-bold text-slate-900 text-sm sm:text-base">Тяжелые внедорожники (Li Auto)</h4>
+                        <p class="text-xs text-slate-500 mt-0.5">Транспортировка тяжелых полноприводных джипов</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-2xl border border-slate-200 overflow-hidden group hover:border-brand-yellow/60 transition cursor-pointer shrink-0 w-[82vw] sm:w-auto snap-center" onclick="openGalleryModal(4)">
+                    <div class="relative h-48 sm:h-60 overflow-hidden">
+                        <img src="photo_4_2026-10-15_08-53-36.jpg" alt="Эвакуация коммерческой Газели" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x400/1e293b/ffc700?text=Gazelle+Van+Transport'">
+                        <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="w-10 h-10 rounded-full bg-brand-yellow text-slate-950 flex items-center justify-center font-bold"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                        </div>
+                    </div>
+                    <div class="p-3.5 sm:p-4">
+                        <h4 class="font-bold text-slate-900 text-sm sm:text-base">Коммерческий транспорт (Газели/Бусы)</h4>
+                        <p class="text-xs text-slate-500 mt-0.5">Перевозка длиннобазной коммерческой техники</p>
+                    </div>
+                </div>
+
+                <!-- Call to action card inside gallery -->
+                <div class="glass-panel p-5 sm:p-6 rounded-2xl border border-brand-yellow/40 flex flex-col justify-between bg-gradient-to-br from-white to-slate-50 shrink-0 w-[82vw] sm:w-auto snap-center">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-brand-yellow text-slate-950 flex items-center justify-center text-xl font-black mb-3">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <h4 class="text-base font-bold text-slate-900 mb-2">Нужен эвакуатор прямо сейчас?</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">
+                            Диспетчер рассчитает стоимость и сразу отправит машину в вашу точку Минска.
+                        </p>
+                    </div>
+                    <a href="tel:+375291142299" class="mt-4 bg-brand-yellow hover:bg-amber-400 text-slate-950 font-black py-3 rounded-xl text-center text-xs uppercase tracking-wider transition">
+                        +375 (29) 114-22-99
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- LIVE MAP SECTION -->
+    <section id="live-map" class="py-12 sm:py-16 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                <div class="lg:col-span-8 rounded-3xl overflow-hidden border border-slate-200 relative h-[280px] sm:h-[400px] shadow-2xl">
+                    <div id="leafletMap" class="w-full h-full z-0"></div>
+                </div>
+                <div class="lg:col-span-4 glass-panel p-5 sm:p-6 rounded-3xl border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-1.5">Дежурство по Минску и МКАД</h4>
+                        <p class="text-xs text-slate-500 mb-4">Автопомощь выезжает со всех развязок города</p>
+                        
+                        <div class="bg-slate-100 p-4 rounded-2xl border border-slate-200 text-center mb-4">
+                            <span class="text-2xl sm:text-3xl font-black text-brand-yellow font-heading">15 - 20</span>
+                            <span class="text-xs sm:text-sm font-bold text-slate-900 ml-1">минут</span>
+                            <p class="text-[11px] text-slate-500 mt-0.5">Среднее время прибытия</p>
+                        </div>
+                    </div>
+
+                    <a href="tel:+375291142299" class="w-full bg-brand-yellow text-slate-950 font-black py-3.5 rounded-xl glow-button transition text-center block text-sm">
+                        Вызвать дежурный эвакуатор
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ ACCORDION -->
+    <section id="faq" class="py-12 sm:py-16 bg-slate-100 relative">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl sm:text-3xl font-extrabold font-heading text-slate-900">Вопросы и ответы</h2>
+            </div>
+            
+            <div class="space-y-3" id="faqAccordion">
+                
+                <div class="glass-panel rounded-2xl border border-slate-200 overflow-hidden">
+                    <button onclick="toggleFaq(1)" class="w-full p-4 text-left font-bold text-slate-900 text-sm sm:text-base flex justify-between items-center gap-3">
+                        <span>Сколько стоит эвакуация авто по Минску?</span>
+                        <i class="fa-solid fa-chevron-down text-brand-yellow transition-transform duration-300" id="faqIcon-1"></i>
+                    </button>
+                    <div class="hidden px-4 pb-4 text-xs sm:text-sm text-slate-500 leading-relaxed border-t border-slate-200 pt-3" id="faqBody-1">
+                        Минимальная стоимость эвакуации легкового автомобиля по Минску составляет <strong>от 120 BYN</strong>. Итоговая цена зависит от расстояния, типа транспортного средства и сложности погрузки (например, заблокированные колеса).
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-2xl border border-slate-200 overflow-hidden">
+                    <button onclick="toggleFaq(2)" class="w-full p-4 text-left font-bold text-slate-900 text-sm sm:text-base flex justify-between items-center gap-3">
+                        <span>Как происходит погрузка авто с низким бампером или Tesla?</span>
+                        <i class="fa-solid fa-chevron-down text-brand-yellow transition-transform duration-300" id="faqIcon-2"></i>
+                    </button>
+                    <div class="hidden px-4 pb-4 text-xs sm:text-sm text-slate-500 leading-relaxed border-t border-slate-200 pt-3" id="faqBody-2">
+                        Наша машина оснащена сдвижной гидравлической платформой. Она опускается ровно к асфальту под минимальным углом (всего 8 градусов), что гарантирует полную целостность бампера, обвесов и днища авто.
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-2xl border border-slate-200 overflow-hidden">
+                    <button onclick="toggleFaq(3)" class="w-full p-4 text-left font-bold text-slate-900 text-sm sm:text-base flex justify-between items-center gap-3">
+                        <span>Выезжаете ли вы за пределы Минска и по Беларуси?</span>
+                        <i class="fa-solid fa-chevron-down text-brand-yellow transition-transform duration-300" id="faqIcon-3"></i>
+                    </button>
+                    <div class="hidden px-4 pb-4 text-xs sm:text-sm text-slate-500 leading-relaxed border-t border-slate-200 pt-3" id="faqBody-3">
+                        Да, мы работаем 24/7 по всему Минскому району и всей Беларуси. Стоимость поездки за МКАД рассчитывается по километражу.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS SECTION -->
+    <section id="reviews" class="py-12 sm:py-16 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="text-brand-yellow font-bold text-xs uppercase tracking-widest bg-brand-yellow/10 px-3.5 py-1.5 rounded-full border border-brand-yellow/20">Отзывы</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold font-heading text-slate-900 mt-2.5">Что говорят автовладельцы</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+                
+                <div class="glass-panel p-5 rounded-2xl border border-slate-200">
+                    <div class="flex items-center gap-1 text-brand-yellow text-xs mb-2">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                        «Вызывал эвакуатор для Tesla Model 3. Платформа опустилась очень низко, затащили акуратно. Цена 120 BYN, как и договаривались!»
+                    </p>
+                    <div class="text-xs font-bold text-slate-900">Александр М. • Tesla Model 3</div>
+                </div>
+
+                <div class="glass-panel p-5 rounded-2xl border border-slate-200">
+                    <div class="flex items-center gap-1 text-brand-yellow text-xs mb-2">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                        «Сломалась Газель на МКАД. Эвакуатор приехал за 15 минут. Платформа мощная, без проблем увезли машину в сервис.»
+                    </p>
+                    <div class="text-xs font-bold text-slate-900">Виктор П. • ГАЗель</div>
+                </div>
+
+                <div class="glass-panel p-5 rounded-2xl border border-slate-200">
+                    <div class="flex items-center gap-1 text-brand-yellow text-xs mb-2">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                        «Очень вежливый водитель. Погрузил заблокированную машину быстро и без нервов. Рекомендую!»
+                    </p>
+                    <div class="text-xs font-bold text-slate-900">Елена К. • Geely Tugella</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-200 py-8 text-slate-500 text-xs text-center sm:text-left">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div>
+                <span class="font-heading font-black text-sm text-slate-900">ЭВАКУАЦИЯ АВТО МИНСК 24/7</span>
+                <p class="text-[11px] text-slate-500 mt-0.5">Автопомощь с гидравлической сдвижной платформой • от 120 BYN</p>
+            </div>
+            <a href="tel:+375291142299" class="text-brand-yellow font-black text-base hover:underline">+375 (29) 114-22-99</a><p class="text-[10px] text-slate-600 w-full sm:text-center mt-2">Сайт: <a href="https://sitefast.by" class="underline">SiteFast.by</a></p>
+        </div>
+    </footer>
+
+    <!-- MOBILE STICKY FLOATING BOTTOM BAR (OPTIMIZED FOR IPHONE NOTCH & ANDROID) -->
+    <div class="fixed bottom-0 left-0 right-0 z-50 glass-panel bg-white/95 border-t border-slate-200 p-2.5 sm:hidden mb-safe">
+        <div class="flex items-center justify-between gap-2">
+            
+            <a href="tel:+375291142299" class="flex-1 bg-gradient-to-r from-brand-yellow to-amber-500 text-slate-950 font-black py-3 rounded-xl text-center text-xs flex items-center justify-center gap-2 glow-button active:scale-95 transition-transform">
+                <i class="fa-solid fa-phone-volume animate-bounce"></i>
+                <div class="flex flex-col text-left leading-tight">
+                    <span class="text-[9px] opacity-80 uppercase tracking-tighter">Вызвать от 120 BYN</span>
+                    <span class="text-xs font-black">+375 (29) 114-22-99</span>
+                </div>
+            </a>
+
+            <a href="https://t.me/share/url?url=Заказ%20эвакуатора&text=Здравствуйте!%20Нужен%20эвакуатор" target="_blank" class="w-12 h-12 rounded-xl bg-sky-500/20 text-sky-400 flex items-center justify-center text-xl shrink-0 active:scale-95 transition-transform">
+                <i class="fa-brands fa-telegram"></i>
+            </a>
+
+            <a href="https://wa.me/375291142299?text=Здравствуйте!%20Нужен%20эвакуатор" target="_blank" class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl shrink-0 active:scale-95 transition-transform">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+
+        </div>
+    </div>
+
+    <!-- GALLERY LIGHTBOX MODAL -->
+    <div id="galleryModal" class="fixed inset-0 z-50 bg-white/95 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="relative max-w-4xl w-full">
+            <button onclick="closeGalleryModal()" class="absolute -top-10 right-0 text-slate-900 text-3xl hover:text-brand-yellow p-2">&times;</button>
+            <img id="modalGalleryImg" src="" class="w-full h-auto max-h-[75vh] object-contain rounded-2xl border border-slate-300">
+            <div id="modalGalleryCaption" class="text-center text-xs sm:text-sm text-slate-600 mt-3 font-bold"></div>
+        </div>
+    </div>
+
+    <!-- ORDER MODAL -->
+    <div id="orderModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="glass-panel bg-slate-100 p-5 sm:p-8 rounded-3xl border border-slate-300 max-w-md w-full relative">
+            <button onclick="closeOrderModal()" class="absolute top-4 right-4 text-slate-500 hover:text-slate-900 text-2xl p-2">&times;</button>
+            
+            <h3 class="text-lg sm:text-xl font-bold font-heading text-slate-900 mb-1" id="modalTitle">Срочный вызов эвакуатора</h3>
+            <p class="text-xs text-slate-500 mb-5">Телефон: <strong class="text-brand-yellow">+375 (29) 114-22-99</strong></p>
+
+            <form onsubmit="handleModalSubmit(event)" class="space-y-3.5">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Имя</label>
+                    <input type="text" required placeholder="Ваше имя" class="w-full bg-slate-200 border border-slate-300 rounded-xl px-3.5 py-3 text-sm text-slate-900 focus:outline-none focus:border-brand-yellow">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Телефон</label>
+                    <input type="tel" required placeholder="+375 (29) 114-22-99" class="w-full bg-slate-200 border border-slate-300 rounded-xl px-3.5 py-3 text-sm text-slate-900 focus:outline-none focus:border-brand-yellow">
+                </div>
+                <button type="submit" class="w-full bg-brand-yellow text-slate-950 font-black py-3.5 rounded-xl glow-button text-sm mt-2">
+                    ПОДТВЕРДИТЬ ВЫЗОВ
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        const GALLERY_IMAGES = [
+            { src: 'photo_2026-05-24_19-49-49.jpg', title: 'Специализированный эвакуатор с гидроплатформой' },
+            { src: 'photo_5_2026-10-15_08-53-36.jpg', title: 'Погрузка Tesla Model 3 под минимальным углом' },
+            { src: 'photo_3_2026-10-15_08-53-36.jpg', title: 'Безопасная транспортировка электромобиля по Минску' },
+            { src: 'photo_1_2026-10-15_08-53-36.jpg', title: 'Эвакуация тяжелого полноприводного кроссовера Li Auto' },
+            { src: 'photo_4_2026-10-15_08-53-36.jpg', title: 'Перевозка коммерческой Газели' }
+        ];
+
+        const VEHICLE_TYPES = [
+            { id: 'car', name: 'Легковое авто', basePrice: 120, icon: 'fa-car' },
+            { id: 'crossover', name: 'Внедорожник / Li Auto', basePrice: 135, icon: 'fa-car-side' },
+            { id: 'tesla', name: 'Tesla / Электрокар', basePrice: 135, icon: 'fa-plug-circle-bolt' },
+            { id: 'minibus', name: 'Микроавтобус / Газель', basePrice: 150, icon: 'fa-van-shuttle' },
+            { id: 'moto', name: 'Мотоцикл', basePrice: 100, icon: 'fa-motorcycle' }
+        ];
+
+        let selectedVehicle = VEHICLE_TYPES[0];
+
+        function initCalculator() {
+            const vGrid = document.getElementById('vehicleTypeGrid');
+            vGrid.innerHTML = VEHICLE_TYPES.map(v => `
+                <button type="button" onclick="selectVehicle('${v.id}')" id="vbtn-${v.id}" class="vehicle-btn flex flex-col items-center justify-center p-3 rounded-xl bg-slate-100 border border-slate-200 text-center hover:border-brand-yellow active:scale-95 transition ${v.id === selectedVehicle.id ? 'border-brand-yellow bg-brand-yellow/10 text-brand-yellow font-bold' : 'text-slate-600'}">
+                    <i class="fa-solid ${v.icon} text-xl mb-1"></i>
+                    <span class="text-[11px] leading-tight">${v.name}</span>
+                </button>
+            `).join('');
+            updateCalculator();
+        }
+
+        function selectIssue(id) {
+            // ...
+        }
+
+        function selectVehicle(id) {
+            selectedVehicle = VEHICLE_TYPES.find(v => v.id === id);
+            document.querySelectorAll('.vehicle-btn').forEach(b => b.classList.remove('border-brand-yellow', 'bg-brand-yellow/10', 'text-brand-yellow', 'font-bold'));
+            document.getElementById(`vbtn-${id}`).classList.add('border-brand-yellow', 'bg-brand-yellow/10', 'text-brand-yellow', 'font-bold');
+            updateCalculator();
+        }
+
+        function updateCalculator() {
+            const distance = parseInt(document.getElementById('distanceRange').value);
+            document.getElementById('distanceValDisplay').innerText = `${distance} км`;
+
+            let optionsExtra = 0;
+            if (document.getElementById('optLockedWheels').checked) optionsExtra += 20;
+            if (document.getElementById('optLowClearance').checked) optionsExtra += 15;
+            if (document.getElementById('optDitch').checked) optionsExtra += 30;
+            if (document.getElementById('optNightTime').checked) optionsExtra += 15;
+
+            let distanceCost = distance > 10 ? (distance - 10) * 2 : 0;
+            let totalBYN = selectedVehicle.basePrice + distanceCost + optionsExtra;
+
+            document.getElementById('summaryVehicleType').innerText = `Тип: ${selectedVehicle.name}`;
+            document.getElementById('summaryBasePrice').innerText = `${selectedVehicle.basePrice} BYN`;
+            document.getElementById('summaryDistanceText').innerText = `Километраж (${distance} км):`;
+            document.getElementById('summaryDistancePrice').innerText = `${distanceCost} BYN`;
+            document.getElementById('summaryOptionsPrice').innerText = `${optionsExtra} BYN`;
+            document.getElementById('calcTotalPrice').innerHTML = `${totalBYN} <span class="text-xl sm:text-2xl font-bold">BYN</span>`;
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
+        }
+
+        function toggleFaq(id) {
+            const body = document.getElementById(`faqBody-${id}`);
+            const icon = document.getElementById(`faqIcon-${id}`);
+            body.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+
+        function openGalleryModal(idx) {
+            document.getElementById('modalGalleryImg').src = GALLERY_IMAGES[idx].src;
+            document.getElementById('modalGalleryCaption').innerText = GALLERY_IMAGES[idx].title;
+            document.getElementById('galleryModal').classList.remove('hidden');
+            document.getElementById('galleryModal').classList.add('flex');
+        }
+
+        function closeGalleryModal() {
+            document.getElementById('galleryModal').classList.add('hidden');
+            document.getElementById('galleryModal').classList.remove('flex');
+        }
+
+        function openOrderModal(title = 'Срочный вызов эвакуатора') {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('orderModal').classList.remove('hidden');
+            document.getElementById('orderModal').classList.add('flex');
+        }
+
+        function openCalcOrderModal() {
+            openOrderModal('Заказ по калькулятору');
+        }
+
+        function closeOrderModal() {
+            document.getElementById('orderModal').classList.add('hidden');
+            document.getElementById('orderModal').classList.remove('flex');
+        }
+
+        function handleModalSubmit(e) {
+            e.preventDefault();
+            alert('Заявка принята! Эвакуатор выезжает на вашу локацию.');
+            closeOrderModal();
+        }
+
+        window.onload = function() {
+            initCalculator();
+
+            // Leaflet Map Init
+            const map = L.map('leafletMap', { zoomControl: false }).setView([53.9006, 27.5590], 11);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18 }).addTo(map);
+
+            const truckIcon = L.divIcon({
+                className: 'custom-map-marker',
+                html: `<div style="background: #FFC700; color: #080C14; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: bold; box-shadow: 0 0 18px rgba(255,199,0,0.9); border: 2px solid white;"><i class="fa-solid fa-truck-ramp-box"></i></div>`,
+                iconSize: [36, 36],
+                iconAnchor: [18, 18]
+            });
+
+            L.marker([53.9100, 27.5400], { icon: truckIcon })
+                .addTo(map)
+                .bindPopup(`<b>Эвакуатор Минск</b><br>Тел: +375 (29) 114-22-99`)
+                .openPopup();
+        };
+    </script>
+<a class="wm-badge" href="https://sitefast.by">⚡ <b>SiteFast.by</b></a></body>
+</html>
